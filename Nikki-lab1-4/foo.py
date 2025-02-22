@@ -9,23 +9,22 @@ class HashSet:
         self._size = 0
 
     def _hash(self, value):
-        """处理None值的哈希函数"""
         return hash(value) % self.capacity if value is not None else 0
 
-    # 1. 添加元素
+    # 1. Add a new element
     def add(self, value):
         idx = self._hash(value)
         if value not in self.buckets[idx]:
             self.buckets[idx].append(value)
             self._size += 1
 
-    # 2. 更新元素（集合特性需先删后加）
+    # 2.  Set an element with a specific  index/key
     def set(self, old_value, new_value):
         if self.member(old_value):
             self.remove(old_value)
             self.add(new_value)
 
-    # 3. 删除元素
+    # 3. Remove an element
     def remove(self, value):
         idx = self._hash(value)
         try:
@@ -35,33 +34,32 @@ class HashSet:
         except ValueError:
             return False
 
-    # 4. 集合大小
+    # 4. Size
     def size(self):
         return self._size
 
-    # 5. 成员判断
+    # 5. Is a member
     def member(self, value):
         return value in self.buckets[self._hash(value)]
 
-    # 6. 反转所有桶内元素顺序
+    # 6. Reverse
     def reverse(self):
         for bucket in self.buckets:
             bucket.reverse()   
         self.buckets.reverse()
 
-    # 7. 从列表初始化
-    # 修改from_list方法
+    # 7. From built-in list
     def from_list(self, lst):
         for item in lst:
             self.add(item)
-        return self  # 添加返回语句
+        return self
 
 
-    # 8. 转换为列表
+    # 8. To built-in list
     def to_list(self):
         return [item for bucket in self.buckets for item in bucket]
 
-    # 9. 过滤元素
+    # 9. Filter data structure by a specific predicate
     def filter(self, predicate):
         new_set = HashSet(self.capacity)
         for bucket in self.buckets:
@@ -70,7 +68,7 @@ class HashSet:
                     new_set.add(item)
         return new_set
 
-    # 10. 映射函数
+    # 10. Map
     def map(self, f):
         new_set = HashSet(self.capacity)
         for bucket in self.buckets:
@@ -78,7 +76,7 @@ class HashSet:
                 new_set.add(f(item))
         return new_set
 
-    # 11. 归约操作
+    # 11. Reduce process elements and build a value by the function
     def reduce(self, reducer, initial=None):
         it = iter(self)
         if initial is None:
@@ -92,7 +90,7 @@ class HashSet:
             value = reducer(value, element)
         return value
 
-    # 12. 迭代器实现
+    # 12. Data structure should be an iterator
     def __iter__(self):
         for bucket in self.buckets:
             yield from bucket
@@ -100,21 +98,21 @@ class HashSet:
     def __next__(self):
         return next(iter(self))
 
-    # 13. 单位元（Monoid）
+    # 13. Monoid
     @classmethod
     def empty(cls):
-        return cls(1)  # 最小容量
+        return cls(1)  # Minimum capacity
 
-    # 14. 结合操作（Monoid）
+    # 14. Concat
     def concat(self, other):
         new_set = HashSet()
-        if self:  # 处理空集合
+        if self:  # empty set
             new_set.from_list(self.to_list())
         if other:
             new_set.from_list(other.to_list())
         return new_set
 
-    # 特殊方法
+    # Special method
     def __str__(self):
         return "{" + ", ".join(map(str, self)) + "}"
 

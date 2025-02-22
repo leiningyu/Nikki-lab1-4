@@ -1,12 +1,10 @@
-# GROUP-NAME - lab NUMBER - variant NUMBER
+# Nikki - lab 1 - variant 4
 
-This is an example project which demonstrates project structure and necessary
-CI checks. It is not the best structure for real-world projects, but good
-enough for educational purposes.
+Set based on hash map, separate chaining
 
 ## Project structure
 
-- `foo.py` -- implementation of `Foo` class with `hello` and `add` features.
+- `foo.py` -- implementation of `HashSet` class with `hello` and `add` features.
    Stateless.
 - `foo_test.py` -- unit and PBT tests for `Foo`.
 
