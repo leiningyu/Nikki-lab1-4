@@ -111,10 +111,3 @@ class HashSet:
         if other:
             new_set.from_list(other.to_list())
         return new_set
-
-    # Special method
-    def __str__(self):
-        return "{" + ", ".join(map(str, self)) + "}"
-
-    def __contains__(self, value):
-        return self.member(value)

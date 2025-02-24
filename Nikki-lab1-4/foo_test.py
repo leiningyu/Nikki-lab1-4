@@ -76,11 +76,22 @@ def test_filter():
     filtered = s.filter(lambda x: x % 2 == 0)
     assert sorted(filtered.to_list()) == [2, 4]
 
+    s = HashSet()
+    s.from_list([1, None, 3, 4])
+    filtered = s.filter(lambda x: x is not None)
+    assert sorted(filtered.to_list()) == [1, 3, 4]
+
 def test_map():
     s = HashSet()
     s.from_list([1, 2, 3])
     mapped = s.map(lambda x: x * 2)
     assert sorted(mapped.to_list()) == [2, 4, 6]
+
+    s = HashSet()
+    s.from_list([1, None, 3])
+    mapped = s.map(lambda x: 0 if x is None else x)
+    assert sorted(mapped.to_list(), key=lambda x: str(x)) == [0, 1, 3]
+
 
 def test_reduce():
     s = HashSet()
@@ -89,6 +100,12 @@ def test_reduce():
     s.from_list([1,2,3])
     assert s.reduce(lambda a,b: a+b) == 6  # No initial value
     assert s.reduce(lambda a,b: a+b, 10) == 16
+
+    s = HashSet()
+    s.from_list([1, None, 3])
+    # view None as 0
+    result = s.reduce(lambda a, b: a + (b if b is not None else 0), 0)
+    assert result == 4
 
 def test_iterator():
     data = [1, 2, 3]
@@ -114,6 +131,11 @@ def test_concat():
     s2 = HashSet().from_list([2, 3])
     combined = s1.concat(s2)
     assert sorted(combined.to_list()) == [1, 2, 3]
+
+    s1 = HashSet().from_list([1, None])
+    s2 = HashSet().from_list([None, 3])
+    combined = s1.concat(s2)
+    assert sorted(combined.to_list(), key=lambda x: str(x)) == [1, 3, None]
     
     # Empty set test
     empty = HashSet.empty()
