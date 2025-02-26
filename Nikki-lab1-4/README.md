@@ -4,9 +4,9 @@ A series of functional requirements are realized and tested based on `hash map, 
 
 ## Project structure
 
-- `foo.py` -- implementation of `Set based on hash map, separate chaining` class with `add`, `set`, `remove`, `size`, `member`, `reverse`, `from_list`, `to_list`, `filter`, `map`, `reduce`, `__iter__`, `__next__`, `empty`, `concat` features.
+- `sc.py` -- implementation of `Set based on hash map, separate chaining` class with `add`, `set`, `remove`, `size`, `member`, `reverse`, `from_list`, `to_list`, `filter`, `map`, `reduce`, `__iter__`, `__next__`, `empty`, `concat` features.
    
-- `foo_test.py` -- unit and PBT tests for `Foo`.
+- `sc_test.py` -- unit and PBT tests for `Foo`.
 
 ## Features
 

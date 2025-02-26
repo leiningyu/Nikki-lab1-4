@@ -1,6 +1,6 @@
 import pytest
 from hypothesis import given, strategies as st
-from foo import HashSet
+from sc import HashSet
 
 def test_add():
     s = HashSet()
