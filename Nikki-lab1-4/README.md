@@ -6,7 +6,7 @@ A series of functional requirements are realized and tested based on `hash map, 
 
 - `sc.py` -- implementation of `Set based on hash map, separate chaining` class with `add`, `set`, `remove`, `size`, `member`, `reverse`, `from_list`, `to_list`, `filter`, `map`, `reduce`, `__iter__`, `__next__`, `empty`, `concat` features.
    
-- `sc_test.py` -- unit and PBT tests for `Foo`.
+- `sc_test.py` -- unit and PBT tests for `sc`.
 
 ## Features
 
@@ -34,11 +34,11 @@ A series of functional requirements are realized and tested based on `hash map, 
 - 22.02.2025 - 0
   - Initial
 - 22.02.2025 - 1
-  - Update README, foo.py and foo_test.py.
+  - Update README, sc.py and sc_test.py.
 - 24.02.2025 - 2
-  - Update README and modify foo.py and foo_test.py.
+  - Update README and modify sc.py and sc_test.py.
 - 26.02.2025 - 3
-  - Update README. 
+  - Update README and modify sc.py and sc_test.py.
 
 ## Design notes
 
