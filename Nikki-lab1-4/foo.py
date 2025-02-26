@@ -18,7 +18,7 @@ class HashSet:
             self.buckets[idx].append(value)
             self._size += 1
 
-    # 2.  Set an element with a specific  index/key
+    # 2.  Set an element with a specific index/key
     def set(self, old_value, new_value):
         if self.member(old_value):
             self.remove(old_value)

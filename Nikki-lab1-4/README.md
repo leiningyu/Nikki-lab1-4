@@ -26,7 +26,8 @@ A series of functional requirements are realized and tested based on `hash map, 
 
 ## Contribution
 
-- Aleksandr Penskoi (EMAIL) -- all work.
+- Lei Ningyu (3232254146@qq.com) -- all work.
+- Yi Min (1757973489@qq.com) -- all work.
 
 ## Changelog
 
@@ -35,8 +36,12 @@ A series of functional requirements are realized and tested based on `hash map, 
 - 22.02.2025 - 1
   - Update README, foo.py and foo_test.py.
 - 24.02.2025 - 2
-  - Update README and modify foo.py.
+  - Update README and modify foo.py and foo_test.py.
+- 26.02.2025 - 3
+  - Update README. 
 
 ## Design notes
 
-- ...
+- The meaning of hash table split linked list method is to build a linked list with key value pairs for each search array index. Mod a value to find its index, and then put it in the bucket (index), if there is already a duplicate value in the list, do not put.
+- When we processed reverse for the first time, the result of test was wrong. Later we found out that we only reversed the order of the elements in the bucket, but in fact we should have reversed the order of the buckets, and the order of the elements in each bucket.
+- We tested adding the None value in foo_test.py, and did not find an error. Our implementation works correctly with the None value.
